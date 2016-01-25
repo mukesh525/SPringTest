@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:beans="http://www.springframework.org/schema/beans" 
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:mvc="http://www.springframework.org/schema/mvc" 
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -14,7 +15,14 @@
     <context:component-scan base-package="com.muk.controller"/>
     <context:component-scan base-package="com.muk.service"/>
     <mvc:annotation-driven />
+
     
+    <interceptors>
+        <interceptor>
+        <beans:bean class="com.muk.controller.DayOfWeekBasedIntercepter"></beans:bean>
+        </interceptor>
+    </interceptors>
+   
    
     <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
         <property name="basename" value="/WEB-INF/message" />
