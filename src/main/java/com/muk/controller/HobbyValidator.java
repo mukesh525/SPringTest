@@ -13,9 +13,10 @@ import javax.validation.ConstraintValidatorContext;
  * @author mukesh
  */
 public class HobbyValidator implements ConstraintValidator<IsHobyValid, String> {
-
+private String ListofValidHobbies;
     @Override
     public void initialize(IsHobyValid isHobyValid) {
+        this.ListofValidHobbies=isHobyValid.ListofValidHobbies();
     }
 
     @Override
@@ -23,7 +24,7 @@ public class HobbyValidator implements ConstraintValidator<IsHobyValid, String> 
         if (t == null) {
             return false;
         }
-        if (t.matches("Music|Cricket|Hockey|Coding")) {
+        if (t.matches(ListofValidHobbies)) {
             return true;
         } else {
             return false;
