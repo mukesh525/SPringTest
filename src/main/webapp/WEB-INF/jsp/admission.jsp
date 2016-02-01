@@ -41,6 +41,7 @@
 
                 <spring:message code="label1.StudentCity"/> <form:input path="studentadress.city" size="30"/>
                 <form:errors path="studentadress.city" cssClass="error"/>
+                <br/>
 
                 <spring:message code="label1.StudentStreet"/><form:input path="studentadress.street" size="30"/>
                 <form:errors path="studentadress.street" cssClass="error"/>
@@ -58,7 +59,7 @@
                     <option value="php1">PHP1</option>
                     <option value="php1">PHP2</option>
                 </select>
-                   <form:errors path="studentskills" cssClass="error"/>
+                <form:errors path="studentskills" cssClass="error"/>
             </p>
 
 
@@ -66,6 +67,6 @@
 
 
 
-        </form:form>>
+        </form:form>
     </body>
 </html>
