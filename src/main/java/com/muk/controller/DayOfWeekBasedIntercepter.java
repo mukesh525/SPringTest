@@ -14,7 +14,7 @@ public class DayOfWeekBasedIntercepter extends HandlerInterceptorAdapter{
 
          Calendar cal = Calendar.getInstance();
         int daysofweek = cal.get(cal.DAY_OF_WEEK);
-        if (daysofweek == 2) {
+        if (daysofweek == 1) {
 
             response.getWriter().write("<h1><b>This website is closed on sunday please try accesing"
                     + " it except sunday</b> <h1>");

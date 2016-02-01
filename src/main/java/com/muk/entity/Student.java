@@ -22,9 +22,10 @@ public class Student {
     private Long phone;
     @Past
     private Date dob;
-    @NotNull 
+    @NotNull(message = "Skills must not be null")
+   
     private List<String> studentskills = new ArrayList();
-    @NotNull 
+    @NotNull(message = "Address must not be null")
     private Address studentadress;
 
     public Address getStudentadress() {

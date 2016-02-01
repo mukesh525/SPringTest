@@ -1,6 +1,7 @@
 package com.muk.controller;
 
 import com.muk.entity.Student;
+import java.util.Map;
 import javax.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,7 +18,7 @@ public class StudentAdmission {
 
     @InitBinder
     public void initBinder(WebDataBinder binder) {
-      //  binder.setDisallowedFields(new String[]{"phone"});
+        //  binder.setDisallowedFields(new String[]{"phone"});
         binder.registerCustomEditor(String.class, "studentname", new StudentNameEditor());
 
     }
@@ -27,9 +28,11 @@ public class StudentAdmission {
         model.addAttribute("msg", "Engeenring college in India");
     }
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    public ModelAndView getAdmissionForm() {
+    @RequestMapping(value = "/")
+    public ModelAndView getAdmissionForm(Map<String, Object> model) {
         ModelAndView mav = new ModelAndView("admission");
+        Student user = new Student();
+        model.put("student", user);
         return mav;
 
     }

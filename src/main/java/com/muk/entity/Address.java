@@ -1,9 +1,16 @@
 package com.muk.entity;
+
+import javax.validation.constraints.NotNull;
+
 public class Address {
-    
+
+    @NotNull(message = "State must not be null")
     private String state;
+    @NotNull(message = "City must not be null")
     private String city;
+    @NotNull(message = "Street must not be null")
     private String street;
+    @NotNull(message = "pincodee must not be null")
     private int pincode;
 
     public String getState() {
@@ -38,6 +45,4 @@ public class Address {
         this.pincode = pincode;
     }
 
-    
-    
 }

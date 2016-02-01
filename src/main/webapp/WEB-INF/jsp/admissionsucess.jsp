@@ -15,8 +15,8 @@
         <h1>${msg}</h1>
         <h3>Form submiited</h3>
         <h2>Details submited by you</h2>
-        
-        
+
+
         <table>
             <tr>
                 <td>Student Name </td>
@@ -38,15 +38,15 @@
                 <td>Student Skills</td>
                 <td>${student.studentskills}</td>
             </tr>
-            <tr>
-                <td>Student Address</td>
+          
+            <tr>  <td>Student Address</td>
                 <td>State :${student.studentadress.state}</td>
                 <td>City:${student.studentadress.city}</td>
                 <td>Street:${student.studentadress.street}</td>
                 <td>Zip:${student.studentadress.pincode}</td>
             </tr>
-          </table>
+        </table>
 
-    
+
     </body>
 </html>

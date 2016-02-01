@@ -11,31 +11,45 @@
     http://www.springframework.org/schema/context/spring-context-4.0.xsd
     http://www.springframework.org/schema/mvc
     http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
-    <context:component-scan base-package="com.muk.controller"/>
-    <context:component-scan base-package="com.muk.service"/>
+    
+    
     <mvc:annotation-driven />
 
     <mvc:interceptors>
         <mvc:interceptor>
-            <mvc:mapping path="/**"/>
+            <mvc:mapping path="/"/>
             <bean class="com.muk.controller.DayOfWeekBasedIntercepter"/>
         </mvc:interceptor>
-        <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
-            <property name="paramName" value="siteLanguage"/>
-        </bean>
+       
+      
+    
     </mvc:interceptors>
+    
+    
+    <context:component-scan base-package="com.muk.controller"/>
+    <context:component-scan base-package="com.muk.service"/>
+    
+    <bean id="localeChangeInterceptor"
+          class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+        <property name="paramName" value="siteLanguage"/>
+    </bean>
         
     <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
         <property name="basename" value="/WEB-INF/message" />
         <property name="cacheSeconds" value="1"/>
     </bean>
     
-  <bean id="viewResolver"
+    
+    <bean id="localeResolver" 
+          class="org.springframework.web.servlet.i18n.CookieLocaleResolver" >
+        <property name="defaultLocale" value="en" />
+    </bean>
+     
+    <bean id="viewResolver"
           class="org.springframework.web.servlet.view.InternalResourceViewResolver"
           p:prefix="/WEB-INF/jsp/"
           p:suffix=".jsp" />
   
-     <bean id="localeResolver" 
-         class="org.springframework.web.servlet.i18n.CookieLocaleResolver" />
+    
 </beans>
 
