@@ -1,16 +1,17 @@
 package com.muk.entity;
 
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import org.hibernate.validator.constraints.NotEmpty;
 
 public class Address {
 
-    @NotNull(message = "State must not be null")
+    @NotEmpty(message = "State must not be null")
     private String state;
-    @NotNull(message = "City must not be null")
+    @NotEmpty(message = "City must not be null")
     private String city;
-    @NotNull(message = "Street must not be null")
+    @NotEmpty(message = "Street must not be null")
     private String street;
-    @NotNull(message = "pincodee must not be null")
+
     private int pincode;
 
     public String getState() {
