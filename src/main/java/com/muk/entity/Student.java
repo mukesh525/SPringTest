@@ -1,6 +1,7 @@
 package com.muk.entity;
 
 import com.muk.controller.IsHobyValid;
+import com.muk.controller.IsNameValid;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -24,6 +25,7 @@ public class Student {
 
     @Pattern(regexp = "[^0-9]*")
     @NotEmpty(message = "Studentname cannot be empty")
+    @IsNameValid
     private String studentname;
     @Size(min = 2, max = 30)
     @IsHobyValid(ListofValidHobbies = "Music|Cricket|Hockey|Coding")

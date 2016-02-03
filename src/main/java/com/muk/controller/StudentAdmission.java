@@ -5,9 +5,7 @@ import java.util.List;
 import java.util.Map;
 import javax.validation.Valid;
 import org.hibernate.Query;
-import org.hibernate.SQLQuery;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
 import org.muk.hibernate.HibernateUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class StudentAdmission {
+
     private Student sStudent;
     private Session session;
 
@@ -41,16 +40,21 @@ public class StudentAdmission {
         ModelAndView mav = new ModelAndView("admission");
         Student user = new Student();
         model.put("student", user);
-         session = HibernateUtil.createSessionFactory().openSession();
-            String hql = "from Student";
-            Query query = session.createQuery(hql);
-            List<Student> listCategories = query.list();
 
-            for (Student student1 : listCategories) {
-                System.out.println(student1);
-                sStudent=student1;
-               
-            }
+        //hsql Query
+        session = HibernateUtil.createSessionFactory().openSession();
+        //String hql = "from Student";
+        String hql = "from Student where student_id = :id";
+        Query query = session.createQuery(hql);
+        Long id = (long) 1;
+        query.setParameter("id", id);
+        List<Student> listCategories = query.list();
+
+        for (Student student1 : listCategories) {
+            System.out.println(student1);
+            sStudent = student1;
+
+        }
         return mav;
 
     }
@@ -68,7 +72,7 @@ public class StudentAdmission {
             session.save(student);
             session.getTransaction().commit();
             session.close();
-            
+
             ModelAndView mav = new ModelAndView("admissionsucess");
             return mav;
         }
