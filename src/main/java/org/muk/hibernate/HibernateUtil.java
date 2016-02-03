@@ -1,27 +1,21 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.muk.hibernate;
 
 import org.hibernate.SessionFactory;
-import org.hibernate.cfg.AnnotationConfiguration;
+import org.hibernate.boot.registry.StandardServiceRegistry;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.cfg.Configuration;
 
 public class HibernateUtil {
  
-    private static final SessionFactory sessionFactory = buildSessionFactory();
-    private static final String HIBERNATE_CFG = "hibernateAnnotations.cfg.xml";
-
-    private static SessionFactory buildSessionFactory() 
-    {
-        
-       SessionFactory sessionFactory= new AnnotationConfiguration().configure("hibernate.cfg.xml").buildSessionFactory();
-
+    private static SessionFactory sessionFactory;
+    private static  StandardServiceRegistry serviceRegistry;
+    
+    
+    public static SessionFactory createSessionFactory(){
+        Configuration configuration=new Configuration();
+        configuration.configure();
+        serviceRegistry=new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
+        sessionFactory=configuration.buildSessionFactory(serviceRegistry);
         return sessionFactory;
-    }
-
-    public static SessionFactory getSessionFactory() {
-        return sessionFactory;
-    }
+     } 
   }

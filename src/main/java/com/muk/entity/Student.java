@@ -37,11 +37,7 @@ public class Student {
     private Long phone;
     @Past
     private Date dob;
-    @ElementCollection
-    @Column(name = "student_skills")
-    @NotEmpty(message = "Skills must not be null")
-    @Transient
-    private List<String> studentskills = new ArrayList();
+   
     @Valid
     private Address studentadress;
 
@@ -69,7 +65,10 @@ public class Student {
         this.dob = dob;
     }
 
-
+    @ElementCollection
+    @Column(name = "student_skills")
+    @NotEmpty(message = "Skills must not be null")
+    private List<String> studentskills = new ArrayList();
     public List<String> getStudentskills() {
         return studentskills;
     }

@@ -7,6 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
+import org.muk.hibernate.HibernateUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -49,16 +50,12 @@ public class StudentAdmission {
             return mav;
         } else {
 
-            Configuration configuration = new Configuration().configure();
-
-            StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder().
-                    applySettings(configuration.getProperties());
-
-            SessionFactory sessionfactory = configuration.buildSessionFactory(builder.build());
-            Session session = sessionfactory.openSession();
-            session.saveOrUpdate(student);
-            session.flush();
-            ModelAndView mav = new ModelAndView("admissionsucess");
+		Session session = HibernateUtil.createSessionFactory().openSession();
+		session.beginTransaction();
+		session.save(student);
+		session.getTransaction().commit();
+                session.close();
+             ModelAndView mav = new ModelAndView("admissionsucess");
             return mav;
         }
 

@@ -11,11 +11,15 @@
         <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="current_session_context_class">thread</property>
         <property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
+         <!-- Echo all executed SQL to stdout -->
         <property name="show_sql">true</property>
-        <property name="hbm2ddl.auto">validate</property>
+
+        <!-- Drop and re-create the database schema on startup -->
+        <property name="hbm2ddl.auto">create</property>
 
         <mapping class ="com.muk.entity.Student" />
         <mapping class ="com.muk.entity.Address" />
+ 
 
     </session-factory>
 </hibernate-configuration>
