@@ -12,7 +12,7 @@ public interface StudentDao {
 
     public List<Student> getAllStudents();
 
-    public Student getStudent(Long id);
+    public Student getStudent(int id);
 
     public boolean isStudentValid(String Name);
 

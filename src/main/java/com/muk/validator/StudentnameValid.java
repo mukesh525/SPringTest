@@ -21,15 +21,17 @@ public class StudentnameValid implements ConstraintValidator<IsNameValid, String
     @Override
     public void initialize(IsNameValid inv) {
         // this.ListofValidHobbies=isHobyValid.ListofValidHobbies();
+         dao=StudentDaoImpl.getInstance();
+        
     }
 
     @Override
     public boolean isValid(String t, ConstraintValidatorContext cvc) {
-        dao=StudentDaoImpl.getInstance();
+       
         if (t == null) {
             return false;
 
-        } else return dao.isStudentValid(t);
+        } else return !dao.isStudentValid(t);
 
     }
 }

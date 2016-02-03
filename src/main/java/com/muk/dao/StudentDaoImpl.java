@@ -8,6 +8,7 @@ package com.muk.dao;
 import com.muk.entity.Student;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.Id;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.muk.hibernate.HibernateUtil;
@@ -36,8 +37,19 @@ public class StudentDaoImpl implements StudentDao {
     }
 
     @Override
-    public Student getStudent(Long id) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public Student getStudent(int id) {
+
+        for (Student student : students) {
+
+            if (student.getStudent_id().equals(id)) {
+                return student;
+
+            }
+            break;
+
+        }
+
+        return null;
     }
 
     @Override

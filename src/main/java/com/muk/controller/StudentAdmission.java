@@ -44,24 +44,23 @@ public class StudentAdmission {
         ModelAndView mav = new ModelAndView("admission");
         Student user = new Student();
         model.put("student", user);
-
-        //hsql Query
-        session = HibernateUtil.createSessionFactory().openSession();
-        //String hql = "from Student";
-        String hql = "from Student where student_id = :id";
-        Query query = session.createQuery(hql);
-        Long id = (long) 1;
-        query.setParameter("id", id);
-        List<Student> listCategories = query.list();
-
-        for (Student student1 : listCategories) {
-            System.out.println(student1);
-            sStudent = student1;
-
-        }
-        return mav;
-
-    }
+        sStudent= dao.getStudent(2);
+         return mav;
+//
+//        //hsql Query
+//        session = HibernateUtil.createSessionFactory().openSession();
+//        //String hql = "from Student";
+//        String hql = "from Student where student_id = :id";
+//        Query query = session.createQuery(hql);
+//        Long id = (long) 1;
+//        query.setParameter("id", id);
+//        List<Student> listCategories = query.list();
+//         for (Student student1 : listCategories) {
+//            System.out.println(student1);
+//            sStudent = student1;
+//
+//        }
+   }
 
     @RequestMapping(value = "/SubmitAdmissionForm", method = RequestMethod.POST)
     public ModelAndView submitAdmissionForm(@Valid @ModelAttribute("student") Student student, BindingResult result) {
