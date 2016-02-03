@@ -22,9 +22,9 @@ public class Student {
 
     @Id @GeneratedValue
     private Long student_id;
-
+    
+    @NotEmpty(message = "Student name cannot be empty")
     @Pattern(regexp = "[^0-9]*")
-    @NotEmpty(message = "Studentname cannot be empty")
     @IsNameValid
     private String studentname;
     @Size(min = 2, max = 30)

@@ -25,11 +25,16 @@ public class StudentAdmission {
     private Student sStudent;
     private StudentDaoImpl dao;
 
+    public StudentAdmission() {
+          dao = StudentDaoImpl.getInstance();
+    }
+    
+
     @InitBinder
     public void initBinder(WebDataBinder binder) {
         //  binder.setDisallowedFields(new String[]{"phone"});
         binder.registerCustomEditor(String.class, "studentname", new StudentNameEditor());
-        dao = StudentDaoImpl.getInstance();
+  
 
     }
 

@@ -6,9 +6,7 @@
 package com.muk.dao;
 
 import com.muk.entity.Student;
-import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.Id;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.muk.hibernate.HibernateUtil;
@@ -43,13 +41,12 @@ public class StudentDaoImpl implements StudentDao {
 
             if (student.getStudent_id().equals(id)) {
                 return student;
-
+            
             }
-            break;
 
         }
 
-        return null;
+        return new Student();
     }
 
     @Override
@@ -67,7 +64,7 @@ public class StudentDaoImpl implements StudentDao {
     public boolean isStudentValid(String Name) {
         boolean valid = true;
         for (int i = 0; i < students.size(); i++) {
-            if (students.get(1).getStudentname().equals(Name)) {
+            if (students.get(i).getStudentname().equals(Name)) {
                 valid = false;
             }
             break;

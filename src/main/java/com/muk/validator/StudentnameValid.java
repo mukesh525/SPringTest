@@ -28,8 +28,8 @@ public class StudentnameValid implements ConstraintValidator<IsNameValid, String
     @Override
     public boolean isValid(String t, ConstraintValidatorContext cvc) {
        
-        if (t == null) {
-            return false;
+        if (t.equals("")) {
+            return true;
 
         } else return !dao.isStudentValid(t);
 
