@@ -1,4 +1,4 @@
-package com.muk.controller;
+package com.muk.validator;
 
 import java.beans.PropertyEditorSupport;
 

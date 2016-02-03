@@ -1,7 +1,7 @@
 package com.muk.entity;
 
-import com.muk.controller.IsHobyValid;
-import com.muk.controller.IsNameValid;
+import com.muk.validator.IsHobyValid;
+import com.muk.validator.IsNameValid;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;

@@ -3,32 +3,36 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.muk.controller;
+package com.muk.validator;
 
+import com.muk.dao.StudentDao;
+import com.muk.dao.StudentDaoImpl;
+import com.muk.entity.Student;
+import java.util.List;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
+
 
 /**
  *
  * @author mukesh
  */
-public class HobbyValidator implements ConstraintValidator<IsHobyValid, String> {
-private String ListofValidHobbies;
+public class StudentnameValid implements ConstraintValidator<IsNameValid, String> {
+
+    private StudentDaoImpl dao;
+
     @Override
-    public void initialize(IsHobyValid isHobyValid) {
-        this.ListofValidHobbies=isHobyValid.ListofValidHobbies();
+    public void initialize(IsNameValid inv) {
+        // this.ListofValidHobbies=isHobyValid.ListofValidHobbies();
     }
 
     @Override
     public boolean isValid(String t, ConstraintValidatorContext cvc) {
+        dao = new StudentDaoImpl();
         if (t == null) {
             return false;
-        }
-        if (t.matches(ListofValidHobbies)) {
-            return true;
-        } else {
-            return false;
-        }
-    }
 
+        } else return dao.isStudentValid(t);
+
+    }
 }

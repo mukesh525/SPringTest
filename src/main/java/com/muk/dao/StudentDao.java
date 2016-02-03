@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.muk.entity;
+package com.muk.dao;
 
+import com.muk.entity.Student;
 import java.util.List;
 
 public interface StudentDao {
