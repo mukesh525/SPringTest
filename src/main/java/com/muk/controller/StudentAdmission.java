@@ -23,7 +23,6 @@ import org.springframework.web.servlet.ModelAndView;
 public class StudentAdmission {
 
     private Student sStudent;
-    private Session session;
     private StudentDaoImpl dao;
 
     @InitBinder
@@ -44,7 +43,7 @@ public class StudentAdmission {
         ModelAndView mav = new ModelAndView("admission");
         Student user = new Student();
         model.put("student", user);
-        sStudent= dao.getStudent(2);
+        sStudent= dao.getStudent(5);
          return mav;
 //
 //        //hsql Query
