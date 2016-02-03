@@ -1,9 +1,12 @@
 package com.muk.entity;
 
-import javax.validation.constraints.Size;
+import javax.persistence.Embeddable;
+import javax.persistence.Table;
 import org.hibernate.validator.constraints.NotEmpty;
-
+@Embeddable
+@Table(name = "Address")
 public class Address {
+
 
     @NotEmpty(message = "State must not be null")
     private String state;
