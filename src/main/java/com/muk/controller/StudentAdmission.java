@@ -1,5 +1,6 @@
 package com.muk.controller;
 
+import com.muk.dao.StudentDaoImpl;
 import com.muk.entity.Student;
 import com.muk.validator.StudentNameEditor;
 import java.util.List;
@@ -23,11 +24,13 @@ public class StudentAdmission {
 
     private Student sStudent;
     private Session session;
+    private StudentDaoImpl dao;
 
     @InitBinder
     public void initBinder(WebDataBinder binder) {
         //  binder.setDisallowedFields(new String[]{"phone"});
         binder.registerCustomEditor(String.class, "studentname", new StudentNameEditor());
+        dao = StudentDaoImpl.getInstance();
 
     }
 
@@ -68,12 +71,7 @@ public class StudentAdmission {
             return mav;
         } else {
 
-            session = HibernateUtil.createSessionFactory().openSession();
-            session.beginTransaction();
-            session.save(student);
-            session.getTransaction().commit();
-            session.close();
-
+            dao.addStudent(student);
             ModelAndView mav = new ModelAndView("admissionsucess");
             return mav;
         }

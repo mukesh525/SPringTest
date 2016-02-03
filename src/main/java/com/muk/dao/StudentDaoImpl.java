@@ -18,12 +18,16 @@ public class StudentDaoImpl implements StudentDao {
     List<Student> students;
     private Session session;
 
-    public StudentDaoImpl() {
+    private StudentDaoImpl() {
         session = HibernateUtil.createSessionFactory().openSession();
         String hql = "from Student";
         Query query = session.createQuery(hql);
         students = query.list();
 
+    }
+
+    public static StudentDaoImpl getInstance() {
+        return new StudentDaoImpl();
     }
 
     @Override

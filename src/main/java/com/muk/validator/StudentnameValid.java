@@ -5,10 +5,7 @@
  */
 package com.muk.validator;
 
-import com.muk.dao.StudentDao;
 import com.muk.dao.StudentDaoImpl;
-import com.muk.entity.Student;
-import java.util.List;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
@@ -28,7 +25,7 @@ public class StudentnameValid implements ConstraintValidator<IsNameValid, String
 
     @Override
     public boolean isValid(String t, ConstraintValidatorContext cvc) {
-        dao = new StudentDaoImpl();
+        dao=StudentDaoImpl.getInstance();
         if (t == null) {
             return false;
 
