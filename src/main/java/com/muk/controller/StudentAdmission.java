@@ -50,20 +50,6 @@ public class StudentAdmission {
         model.put("student", user);
         sStudent= dao.getStudent(5);
          return mav;
-//
-//        //hsql Query
-//        session = HibernateUtil.createSessionFactory().openSession();
-//        //String hql = "from Student";
-//        String hql = "from Student where student_id = :id";
-//        Query query = session.createQuery(hql);
-//        Long id = (long) 1;
-//        query.setParameter("id", id);
-//        List<Student> listCategories = query.list();
-//         for (Student student1 : listCategories) {
-//            System.out.println(student1);
-//            sStudent = student1;
-//
-//        }
    }
 
     @RequestMapping(value = "/SubmitAdmissionForm", method = RequestMethod.POST)
