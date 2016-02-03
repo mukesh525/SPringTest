@@ -1,9 +1,19 @@
 package com.muk.entity;
 
 import com.muk.controller.IsHobyValid;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.CollectionTable;
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.Valid;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Past;
@@ -11,9 +21,14 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.NotEmpty;
 
+@Entity
 public class Student {
 
+    @Id @GeneratedValue
+    private Long student_id;
+
     @Pattern(regexp = "[^0-9]*")
+    @NotEmpty(message = "Studentname cannot be empty")
     private String studentname;
     @Size(min = 2, max = 30)
     @IsHobyValid(ListofValidHobbies = "Music|Cricket|Hockey|Coding")
@@ -22,7 +37,10 @@ public class Student {
     private Long phone;
     @Past
     private Date dob;
+    @ElementCollection
+    @Column(name = "student_skills")
     @NotEmpty(message = "Skills must not be null")
+    @Transient
     private List<String> studentskills = new ArrayList();
     @Valid
     private Address studentadress;
@@ -51,6 +69,7 @@ public class Student {
         this.dob = dob;
     }
 
+
     public List<String> getStudentskills() {
         return studentskills;
     }
@@ -74,5 +93,14 @@ public class Student {
     public void setStudenthobby(String studenthobby) {
         this.studenthobby = studenthobby;
     }
+
+    public Long getStudent_id() {
+        return student_id;
+    }
+
+    public void setStudent_id(Long student_id) {
+        this.student_id = student_id;
+    }
+
 
 }
