@@ -1,19 +1,14 @@
 package com.muk.entity;
 
 import com.muk.controller.IsHobyValid;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.Table;
-import javax.persistence.Transient;
 import javax.validation.Valid;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Past;
@@ -69,6 +64,11 @@ public class Student {
     @Column(name = "student_skills")
     @NotEmpty(message = "Skills must not be null")
     private List<String> studentskills = new ArrayList();
+
+    @Override
+    public String toString() {
+        return "Student{" + "student_id=" + student_id + ", studentname=" + studentname + ", studenthobby=" + studenthobby + ", phone=" + phone + ", dob=" + dob + ", studentadress=" + studentadress + ", studentskills=" + studentskills + '}';
+    }
     public List<String> getStudentskills() {
         return studentskills;
     }
