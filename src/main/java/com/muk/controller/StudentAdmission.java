@@ -59,8 +59,7 @@ public class StudentAdmission {
             ModelAndView mav = new ModelAndView("admission");
             return mav;
         } else {
-
-            dao.addStudent(student);
+             dao.addStudent(student);
             ModelAndView mav = new ModelAndView("admissionsucess");
             return mav;
         }
