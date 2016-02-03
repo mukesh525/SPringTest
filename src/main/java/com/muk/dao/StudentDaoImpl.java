@@ -42,12 +42,6 @@ public class StudentDaoImpl implements StudentDao {
     }
 
     @Override
-    public void deleteStudent(Student student) {
-        students.remove(student);
-
-    }
-
-    @Override
     public Student getStudentName(String Name) {
         throw new UnsupportedOperationException("Not supported yet.");
 
@@ -55,15 +49,34 @@ public class StudentDaoImpl implements StudentDao {
 
     @Override
     public boolean isStudentValid(String Name) {
-        boolean valid=true;
+        boolean valid = true;
         for (int i = 0; i < students.size(); i++) {
             if (students.get(1).getStudentname().equals(Name)) {
-                valid=false;
+                valid = false;
             }
             break;
 
         }
         return valid;
+
+    }
+
+    @Override
+    public void addStudent(Student student) {
+
+        session = HibernateUtil.createSessionFactory().openSession();
+        session.beginTransaction();
+        session.save(student);
+        session.getTransaction().commit();
+
+        String hql = "from Student";
+        Query query = session.createQuery(hql);
+        students = query.list();
+        session.close();
+    }
+
+    @Override
+    public void deleteStudent(Student student) {
 
     }
 
