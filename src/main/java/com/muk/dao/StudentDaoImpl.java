@@ -36,13 +36,13 @@ public class StudentDaoImpl implements StudentDao {
 
     @Override
     public Student getStudent(int id) {
-
-        for (Student student : students) {
-
-            if (student.getStudent_id().equals(id)) {
-                return student;
-            
-            }
+        session = HibernateUtil.createSessionFactory().openSession();
+        String hql = "from Student where student_id = :id";
+        Query query = session.createQuery(hql);
+        query.setParameter("id", (long)id);
+        List<Student> listCategories = query.list();
+        for (Student student1 : listCategories) {
+            return student1;
 
         }
 
