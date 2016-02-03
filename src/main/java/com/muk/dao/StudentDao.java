@@ -9,10 +9,19 @@ import com.muk.entity.Student;
 import java.util.List;
 
 public interface StudentDao {
-   public List<Student> getAllStudents();
-   public Student getStudent(Long id);
-   public boolean isStudentValid(String Name);
-   public Student getStudentName(String Name);
-   public void updateStudent(Student student);
-   public void deleteStudent(Student student);
+
+    public List<Student> getAllStudents();
+
+    public Student getStudent(Long id);
+
+    public boolean isStudentValid(String Name);
+
+    public Student getStudentName(String Name);
+
+    public void updateStudent(Student student);
+
+    public void deleteStudent(Student student);
+
+    public void addStudent(Student student);
+
 }
