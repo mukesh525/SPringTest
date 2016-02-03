@@ -8,11 +8,11 @@ import org.hibernate.validator.constraints.NotEmpty;
 public class Address {
 
 
-    @NotEmpty(message = "State must not be null")
+    @NotEmpty(message = "State must not be empty")
     private String state;
-    @NotEmpty(message = "City must not be null")
+    @NotEmpty(message = "City must not be empty")
     private String city;
-    @NotEmpty(message = "Street must not be null")
+    @NotEmpty(message = "Street must not be empty")
     private String street;
 
     private int pincode;
